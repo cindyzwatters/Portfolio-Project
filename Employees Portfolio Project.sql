@@ -83,11 +83,11 @@ ORDER BY Avg_Salary DESC;
 
  -- Looking at managers salaries in relations to departments
 SELECT 
-    MAX(s.salary) AS highest_salary,
-    e.emp_no,
-    e.first_name,
-    e.last_name,
-    d.dept_name
+    MAX(s.salary) as highest_salary,
+    e.emp_no as emp_no,
+    e.first_name as first_name,
+    e.last_name as last_name,
+    d.dept_name as dept_name
 FROM
     salaries s
         JOIN
@@ -96,7 +96,7 @@ FROM
     dept_manager de ON e.emp_no = de.emp_no
         JOIN
     departments d ON de.dept_no = d.dept_no
-GROUP BY e.emp_no
+GROUP BY e.emp_no, e.first_name, e.last_name, d.dept_name
 ORDER BY highest_salary DESC;
  -- Only 3 managers earn below average salary for company.
 
